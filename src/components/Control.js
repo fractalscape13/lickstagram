@@ -1,26 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class Control extends React.Component {
+function Control() {
+  const [file, setFile] = useState('');
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      videoURL: ''
-    };
-    this.handleUploadVideo = this.handleUploadVideo.bind(this);
+  function onChangeHandler(event) {
+    console.log("onChangeHandler");
+    console.log("onChangeHandler", event.target.files[0]);
+    setFile(event.target.files[0]);
+  }
+  
+  function onClickHandler(event) {
+    console.log("onClickHandler");
+    const data = new FormData()
+    data.append('file', file)
   }
 
-  handleUploadVideo(event) {
-    event.preventDefault();
-
-
-  }
-
-  render() {
-    return (
+  return (
+    <div>
       <h1>Nothing yet</h1>
-    );
-  }
+      <input type="file" onChange={onChangeHandler} />
+      <button type="button" onClick={onClickHandler}>Add video</button> 
+
+    </div>
+  );
 }
 
-export default Control;
+export default Control; 
