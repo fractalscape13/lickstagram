@@ -26,3 +26,13 @@ button:hover {
   cursor: pointer;
   opacity: .6;
 }
+
+input:hover {
+  opacity: .6;
+}
+
+video {
+  margin: 25px;
+  max-width: 300px;
+  border-radius: 15px;
+}

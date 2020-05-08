@@ -14,8 +14,9 @@
 ### Technology
 * React
 * Redux/React-Redux?
-* Video-React or ReactPlayer
-* MongoDb/Express/Node/Axios/Multer ~ or ~ Firebase ~ or ~ C#/.NET/MySQL
+* Video-React or ReactPlayer (or similar)
+* MongoDb/Express/Node/Axios/Multer/Nodemon/Cors
+      * ~ or ~ Firebase ~ or ~ C#/.NET/MySQL
 
 ### Stretch Goals
 * Ability to comment on clips
