@@ -1,3 +1,10 @@
 body, html {
   min-height: 100%;
 }
+
+.mainStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px;
+}
