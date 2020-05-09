@@ -19,10 +19,12 @@
       * ~ or ~ Firebase ~ or ~ C#/.NET/MySQL
 
 ### Stretch Goals
+* Profile picture/avatar, display name
 * Ability to comment on clips
 * Play count on videos
 * Ability to follow specific users
 * Ability to mute specific users
-* Add tags to post, all search or follow by tag
+* Add search by user
+* Add tags to post, allow search or follow by tag
 * Access device camera to gake clip
-* Create mobile version with React Native
+* Create mobile version with React Native (or if not, responsive media-query based mobile stylesheet)
