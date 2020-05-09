@@ -4,4 +4,5 @@
 * 8:30 to 10 : research about uploading & saving video files
 * 10 to 11 : express.js tutorial, basic research about axios
 * 11 to noon : research about uploading and accessing video files
-* 1 to ? : Attempt to upload video
+* 1 to 4 : Attempt to upload video, research into Axios, Multer, Nodemon, Express
+* 4 to 5: Experimental implementation
