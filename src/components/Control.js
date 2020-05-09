@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function Control() {
   const [file, setFile] = useState(null);
+  const [db, setDb] = useState([]);
 
   function onChangeHandler(event) {
     console.log("onChangeHandler", event.target.files[0]);
@@ -16,18 +17,25 @@ function Control() {
     console.log("DATA", data)
     axios.post('http://localhost:3000/upload', data)
     .then(res => {
-      console.log(res.statusText)
+      console.log("RES IS HERE:", res)
+      const newState = [...db, res.data.originalname]
+      setDb(newState);
     })
   }
+  
+  const feed = db.map((vid, i) => {
+  let vidSrc = 'uploads/' + vid;
+  return <video key={i} controls>
+              <source src={vidSrc} type="video/mp4" />
+            </video>
+  })
 
   return (
     <div>
       <hr />
       <input type="file" name="file" onChange={onChangeHandler} />
       <button type="button" onClick={onClickHandler}>Add video</button><br />
-      <video controls>
-        <source src="uploads/lick.mp4" type="video/mp4" />
-      </video>
+      {feed}
     </div>
   );
 }
