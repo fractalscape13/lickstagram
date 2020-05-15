@@ -32,9 +32,22 @@ app.post('api/user/signin', (req, res) => {
   User.findOne({'email': req.body.email}, (err, user) => {
     if (!user) {
       res.json({message: 'Login failed, user not found'})
+    } else {
+      user.comparePassword(req.body.password, (err, isMatch) => {
+        if (err) {
+          throw err;
+        }
+        if (!isMatch) {
+          return res.status(400).json({
+            message: 'Incorrect password'
+          });
+        } else {
+          res.status(200).send('Successful login')
+        }
+      }
     }
   })
-})
+});
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {

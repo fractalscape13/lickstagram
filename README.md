@@ -14,29 +14,22 @@ _Instagram-like app that allows users to share short videos of playing a musical
 In terminal, navigate to desktop or directory where you want to clone the project
 Clone repository in command line with 'git clone https://github.com/fractalscape13/lickstagram'
 
-In the root project directory, you can run:
+In the root project directory, run `npm install` to install all dependencies.  Then, you can run:
 ### `npm start` and `npx nodemon` in separate terminals
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm run build`
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Technologies Used
 * React
 * create-react-app
 * Express
 * Node
+* Nodemon
 * MongoDb
 * Mongoose
+* Bcrypt
 * Axios
-* Nodemon
 * Multer
 * Body Parser
 * Cors
