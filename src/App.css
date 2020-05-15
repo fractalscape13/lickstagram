@@ -20,6 +20,7 @@ body, html {
 button {
   border: 5px solid darkblue;
   border-radius: 15px;
+  margin: 3px;
 }
 
 button:hover {
@@ -27,12 +28,25 @@ button:hover {
   opacity: .6;
 }
 
+input {
+  margin: 3px;
+}
+
 input:hover {
-  opacity: .6;
+  opacity: .8;
 }
 
 video {
   margin: 25px;
   max-width: 300px;
   border-radius: 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: .6;
+  cursor: pointer;
 }

@@ -6,3 +6,7 @@
 * 11 to noon : research about uploading and accessing video files
 * 1 to 4 : Attempt to upload video, research into Axios, Multer, Nodemon, Express
 * 4 to 5: Experimental implementation
+
+### Friday May 15, 2020
+
+* 8 to ? : MongoDB research & tutorial

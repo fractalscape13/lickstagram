@@ -1,6 +1,6 @@
 # Lickstagram
 
-#### _May 8, 2020_
+#### _May 8 & 15, 2020_
 #### By _**Joseph Wangemann**_
 
 ## Description
@@ -14,7 +14,7 @@ _Instagram-like app that allows users to share short videos of playing a musical
 In terminal, navigate to desktop or directory where you want to clone the project
 Clone repository in command line with 'git clone https://github.com/fractalscape13/lickstagram'
 
-In the project directory, you can run:
+In the root project directory, you can run:
 ### `npm start` and `npx nodemon` in separate terminals
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -33,9 +33,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * create-react-app
 * Express
 * Node
+* MongoDb
+* Mongoose
 * Axios
 * Nodemon
 * Multer
+* Body Parser
 * Cors
 
 ## Known Bugs/Contact
