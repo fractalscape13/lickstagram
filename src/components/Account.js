@@ -5,7 +5,10 @@ function Account() {
   return (
     <React.Fragment>
       <p>Login/Register/Logout</p>
-      <p>See other account details</p>
+      <input placeholder="Email" />
+      <input placeholder="Password" />
+      <button>Sign in</button>
+      <a>New? Click to register</a>
     </React.Fragment>
   );
 }
