@@ -9,4 +9,5 @@
 
 ### Friday May 15, 2020
 
-* 8 to ? : MongoDB research & tutorial
+* 8 to 12 : MongoDB research, experimental implementation
+* 12 to 5 : Mongo tutorial, more experimentation.  Research authentication w/Mongo and Bcrypt
