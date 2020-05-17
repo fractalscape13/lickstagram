@@ -1,8 +1,8 @@
 import * as c from '../actions/ActionTypes';
 
 let initialState = {
-  loggedIn = false,
-  currentUser = null
+  loggedIn: false,
+  currentUser: null
 }
 
 export default (state = initialState, action) => {
