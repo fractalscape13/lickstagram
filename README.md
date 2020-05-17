@@ -23,6 +23,8 @@ The page will reload if you make edits.<br />
 ## Technologies Used
 * React
 * create-react-app
+* Redux / React-Redux
+* React-Router
 * Express
 * Node
 * Nodemon
@@ -33,6 +35,7 @@ The page will reload if you make edits.<br />
 * Multer
 * Body Parser
 * Cors
+* Dotenv
 
 ## Known Bugs/Contact
 
