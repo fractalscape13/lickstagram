@@ -1,4 +1,4 @@
-import * as c from '../Actions/ActionTypes';
+import * as c from '../actions/ActionTypes';
 
 let initialState = {
   loggedIn = false,
