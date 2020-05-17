@@ -1,6 +1,6 @@
 # Lickstagram
 
-#### _May 8 & 15, 2020_
+#### _May 2020_
 #### By _**Joseph Wangemann**_
 
 ## Description
