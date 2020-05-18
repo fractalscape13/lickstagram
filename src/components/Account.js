@@ -5,13 +5,16 @@ import Signin from './Signin';
 import AccountDetails from './AccountDetails';
 
 function Account() {
-  
+
   const [registerForm, setRegisterForm] = useState(false);
   const loggedIn = useSelector(state => state.loggedIn);
 
   if (registerForm && !loggedIn) {
     return (
-      <Register />
+      <React.Fragment>
+        <Register />
+        <p className="clickable" onClick={() => setRegisterForm(false)}>Already registered? Click to signin</p>
+      </React.Fragment>
     );
   } else if (!loggedIn) {
     return (

@@ -35,6 +35,8 @@ button:hover {
 
 input {
   margin: 3px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 input:hover {
@@ -54,4 +56,11 @@ a {
 a:hover {
   opacity: .6;
   cursor: pointer;
+}
+
+.post {
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 15px;
 }

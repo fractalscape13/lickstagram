@@ -1,26 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../actions/index';
+import axios from 'axios';
 
 
 function Register() {
   const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordFail, setPasswordFail] = useState(false);
+  const [registerFail, setRegisterFail] = useState(false);
 
   function handleRegister() {
-    // save user to database
-    //get user id from database for login dispatch
-    // const action = { id: _id }
-    // dispatch(logIn(action));
-    dispatch(logIn());
+    if (password !== confirmPassword) {
+      setPasswordFail(true);
+      setTimeout(() => {
+        setPasswordFail(false)
+        }, 3000);
+    } else {
+      const body = {
+        email,
+        username,
+        password
+      }
+      axios.post('/auth/registerUser', body)
+        .then(res => {
+          const action = { id: res.data._id }
+          dispatch(logIn(action));
+        })
+        .catch(e => {
+          setRegisterFail(true);
+          console.log(e)
+        })
+    }
   }
 
   return (
     <React.Fragment>
       <h3>Register</h3>
-      <input placeholder="Email" />
-      <input placeholder="Password" />
-      <input placeholder="Confirm Password" />
+      <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+      <input onChange={(e) => setUsername(e.target.value)}placeholder="Choose a username" />
+      <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
+      <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password" />
       <button onClick={handleRegister}>Sign up!</button>
+      {passwordFail ? <p>Passwords don't match, please try again</p> : null}
+      {registerFail ? <p>That email is already in use</p> : null}
     </React.Fragment>
   );
 }

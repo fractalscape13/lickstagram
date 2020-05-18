@@ -8,6 +8,7 @@ function Feed() {
   const [file, setFile] = useState(null);
   const [db, setDb] = useState([]);
   const currentUser = useSelector(state => state.currentUser);
+  const [description, setDescription] = useState('');
 
   function onChangeHandler(event) {
     console.log("onChangeHandler target file", event.target.files[0]);
@@ -24,7 +25,9 @@ function Feed() {
       console.log("error on upload", err)
     })
     const body = {
-      name: file.name
+      name: file.name,
+      description: description,
+      favorited: []
     }    
     axios.post('/api/addVideo', body)
     .then(res => {
@@ -51,10 +54,12 @@ function Feed() {
   let feed = db.map((vid, i) => {
     let vidSrc = 'uploads/' + vid.name;
     return (
-      <div key={i}>
+      <div className="post" key={i}>
+        <p>Shredmaster5000</p>
         <video  controls>
           <source src={vidSrc} type="video/mp4" />
         </video>
+        <p>{vid.description}</p>
         <button onClick={() => handleLike(vid._id)}>Like</button>
       </div>
     )
@@ -62,9 +67,8 @@ function Feed() {
 
   return (
     <React.Fragment>
-      <hr />
       <input type="file" name="file" onChange={onChangeHandler} />
-      <input type="text" name="description" placeholder="Description" />
+      <input type="text" onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
       <button type="button" onClick={onClickHandler}>Add video</button><br />
       {feed}
     </React.Fragment>
