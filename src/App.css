@@ -11,6 +11,11 @@ body, html {
   margin: 25px;
 }
 
+.clickable:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
 .header {
   display: flex;
   flex-direction: column;

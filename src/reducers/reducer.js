@@ -17,5 +17,7 @@ export default (state = initialState, action) => {
         loggedIn: false,
         currentUser: null
       });
+    default:
+      return state;
   }
-}
+};

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import Account from './Account';
 
 function Control() {
   const [file, setFile] = useState(null);
   const [db, setDb] = useState([]);
+  const loggedIn = useSelector(state => state.loggedIn);
+  const currentUser = useSelector(state => state.currentUser);
 
   useEffect(() => {
     if(!(db.length > 0)){
@@ -40,17 +44,8 @@ function Control() {
     })
   }
 
-  function handleDelete(id, name) {
-    const body = {
-      id: id
-    }
-    axios.post('/api/deleteVideo', body)
-    .then(res => {
-      setDb(res.data);
-    })
-    .catch(err => {
-      console.log("error on delete", err)
-    })
+  function handleLike(id) {
+    console.log("you liked this video id:", id);
   }
 
   let feed = db.map((vid, i) => {
@@ -60,19 +55,26 @@ function Control() {
       <video  controls>
         <source src={vidSrc} type="video/mp4" />
       </video>
-      <button onClick={() => handleDelete(vid._id, vid.name)}>Delete this lick</button>
+      <button onClick={() => handleLike(vid._id)}>Like</button>
     </div>
   )
   })
 
-  return (
-    <div>
-      <hr />
-      <input type="file" name="file" onChange={onChangeHandler} />
-      <button type="button" onClick={onClickHandler}>Add video</button><br />
-      {feed}
-    </div>
-  );
+  if (!loggedIn) {
+    return (
+      <Account />
+    )
+  } else {
+    return (
+      <div>
+        <hr />
+        <input type="file" name="file" onChange={onChangeHandler} />
+        <input type="text" name="description" placeholder="Description" />
+        <button type="button" onClick={onClickHandler}>Add video</button><br />
+        {feed}
+      </div>
+    );
+  }
 }
 
 export default Control; 
