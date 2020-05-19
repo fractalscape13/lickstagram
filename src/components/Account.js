@@ -20,15 +20,13 @@ function Account() {
   if (registerForm && !loggedIn) {
     return (
       <React.Fragment>
-        <Register />
-        <p className="clickable" onClick={() => setRegisterForm(false)}>Already registered? Click to signin</p>
+        <Register setRegisterForm={setRegisterForm}/>
       </React.Fragment>
     );
   } else if (!loggedIn) {
     return (
       <React.Fragment>
-        <Signin />
-        <p className="clickable" onClick={() => setRegisterForm(true)}>New? Click to register</p>
+        <Signin setRegisterForm={setRegisterForm}/>
       </React.Fragment>
     );
   } else {

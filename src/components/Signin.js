@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../actions/index';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 
-function Signin() {
+function Signin(props) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,6 +29,7 @@ function Signin() {
           }, 3000);
         console.log(e)
       })
+      props.history.push('/');
   }
 
   return (
@@ -36,10 +38,11 @@ function Signin() {
       <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
       <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
       <button onClick={handleSignin}>Sign in</button>
+      <p className="clickable" onClick={() => props.setRegisterForm(true)}>New? Click to register</p>
       {loginFail ? <p>Your email or password was incorrect</p> : null}
 
     </React.Fragment>
   );
 }
 
-export default Signin;
+export default withRouter(Signin);
