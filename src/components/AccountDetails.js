@@ -10,6 +10,7 @@ function AccountDetails() {
   const [db, setDb] = useState([]);
   const [deleteAccount, setDeleteAccount] = useState(false);
   const [editVideo, setEditVideo] = useState(null);
+  const [favoritedVideos, setFavoritedVideos] = useState(false);
   const currentUser = useSelector(state => state.currentUser);
   const currentId = useSelector(state => state.currentId);
   const dispatch = useDispatch();
@@ -38,8 +39,23 @@ function AccountDetails() {
     }
   }, [])
 
-
   let feed = db.map((vid, i) => {
+    let vidSrc = 'uploads/' + vid.name;
+    return (
+      <div className="post" key={i}>
+        <video  controls>
+          <source src={vidSrc} type="video/mp4" />
+        </video>
+        <p>{vid.description}</p>
+        <p>{vid.favorited.length} stars</p>
+        <button onClick={() => setEditVideo(vid)}>Edit Lick</button>
+        <button onClick={() => handleDelete(vid._id)}>Delete Lick</button>
+      </div>
+    )
+    })
+
+    let filteredArr = db.filter(vid => vid.favorited.includes(currentUser))
+    let starredFeed = filteredArr.map((vid, i) => {
     let vidSrc = 'uploads/' + vid.name;
     return (
       <div className="post" key={i}>
@@ -83,11 +99,21 @@ function AccountDetails() {
     return (
       <EditVideo currentVideo={editVideo} resetEdit={() => setEditVideo(null)} setDb={setDb}/>
     )
+  } else if (favoritedVideos) {
+    return (
+      <React.Fragment>
+        <h3>{currentUser}</h3> 
+        <h3>Starred Licks</h3> 
+        <button onClick={() => setFavoritedVideos(false)}>Back to my licks</button>
+        {starredFeed}
+      </React.Fragment>
+    );
   } else {
     return (
       <React.Fragment>
         <h3>{currentUser}</h3> 
         <button onClick={handleDeleteAccount}>Delete Account</button>
+        <button onClick={() => setFavoritedVideos(true)}>See Your Starred Licks</button>
         <p>My Licks</p>
         {feed}
       </React.Fragment>
