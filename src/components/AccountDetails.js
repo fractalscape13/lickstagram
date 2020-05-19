@@ -4,6 +4,7 @@ import axios from 'axios';
 import DeleteAccount from './DeleteAccount';
 import EditVideo from './EditVideo';
 import { updateSession } from '../actions/index';
+import { FaRegStar } from 'react-icons/fa';
 
 function AccountDetails() {
 
@@ -46,10 +47,12 @@ function AccountDetails() {
         <video  controls>
           <source src={vidSrc} type="video/mp4" />
         </video>
-        <p>{vid.description}</p>
-        <p>{vid.favorited.length} stars</p>
-        <button onClick={() => setEditVideo(vid)}>Edit Lick</button>
-        <button onClick={() => handleDelete(vid._id)}>Delete Lick</button>
+        <div className="postbody">
+          <p><em>{vid.description}</em></p>
+          <p>Stars: {vid.favorited.length}</p>
+          <button onClick={() => setEditVideo(vid)}>Edit Lick</button>
+          <button onClick={() => handleDelete(vid._id)}>Delete Lick</button>
+        </div>
       </div>
     )
     })
@@ -62,10 +65,12 @@ function AccountDetails() {
         <video  controls>
           <source src={vidSrc} type="video/mp4" />
         </video>
-        <p>{vid.description}</p>
-        <p>{vid.favorited.length} stars</p>
-        <button onClick={() => setEditVideo(vid)}>Edit Lick</button>
-        <button onClick={() => handleDelete(vid._id)}>Delete Lick</button>
+        <div className="postbody">
+          <p><em>{vid.description}</em></p>
+          <p>Stars: {vid.favorited.length}</p>
+          <p className="clickable" onClick={() => handleFavorite(vid._id)}>Click to remove from starred licks</p>
+          {/* <button className={vid.favorited.includes(currentUser) ? "alreadystarred" : "starbtn"}onClick={() => handleFavorite(vid._id)}><FaRegStar size="20px" /></button> */}
+        </div>
       </div>
     )
     })
@@ -91,6 +96,18 @@ function AccountDetails() {
     setDeleteAccount(false);
   }
 
+  function handleFavorite(id) {
+    const body = {
+      id,
+      currentUser
+    }
+    axios.put('/api/favoriteVideo', body)
+    .then(res => {
+      setDb(res.data);
+    })
+    .catch(err => console.log('error on favorite', err))
+  }
+
   if (deleteAccount) {
     return (
       <DeleteAccount dontDeleteAccount={dontDeleteAccount}/>
@@ -114,7 +131,7 @@ function AccountDetails() {
         <h3>{currentUser}</h3> 
         <button onClick={handleDeleteAccount}>Delete Account</button>
         <button onClick={() => setFavoritedVideos(true)}>See Your Starred Licks</button>
-        <p>My Licks</p>
+        <h3>My Licks</h3>
         {feed}
       </React.Fragment>
     );

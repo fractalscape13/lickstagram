@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { updateSession } from '../actions/index';
+import { FaRegStar } from 'react-icons/fa';
 
 function Feed() {
 
@@ -82,13 +83,15 @@ function Feed() {
     let vidSrc = 'uploads/' + vid.name;
     return (
       <div className="post" key={i}>
-        <p>{vid.username}</p>
         <video  controls>
           <source src={vidSrc} type="video/mp4" />
         </video>
-        <p>{vid.description}</p>
-        <p>{vid.favorited.length} stars</p>
-        <button onClick={() => handleFavorite(vid._id)}>Star</button>
+        <div className="postbody">
+          <h4>{vid.username}</h4>
+          <p><em>{vid.description}</em></p>
+          <p>Stars: {vid.favorited.length}</p>
+          <button  className={vid.favorited.includes(currentUser) ? "alreadystarred" : "starbtn"} onClick={() => handleFavorite(vid._id)}><FaRegStar size="20px" /></button>
+        </div>
       </div>
     )
     })
