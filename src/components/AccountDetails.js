@@ -81,7 +81,7 @@ function AccountDetails() {
     )
   } else if (editVideo) {
     return (
-      <EditVideo currentVideo={editVideo} resetEdit={() => setEditVideo(null)}/>
+      <EditVideo currentVideo={editVideo} resetEdit={() => setEditVideo(null)} setDb={setDb}/>
     )
   } else {
     return (

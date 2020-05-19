@@ -57,7 +57,6 @@ function Feed() {
   }
 
   function handleFavorite(id) {
-    console.log("you starred this video id:", id, "user:", currentUser);
     const body = {
       id,
       currentUser

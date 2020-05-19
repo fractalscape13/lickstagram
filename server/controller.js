@@ -36,7 +36,6 @@ module.exports = {
           .find()
           .toArray()
           .then((results) => {
-            console.log(results);
             res.status(200).send(results);
           })
           .catch((error) => console.error(error));
@@ -107,6 +106,24 @@ module.exports = {
   }, 
 
   editVideo: (req, res) => {
-
+    MongoClient.connect(CONNECTION_STRING, { useUnifiedTopology: true })
+      .then(async(client) => {
+        console.log("Connected to Database");
+        const db = client.db("lickstagram");
+        const videosCollection = db.collection("videos");
+        let mongodb = require("mongodb");
+        let ObjectID = mongodb.ObjectID;
+        console.log("description", req.body.description)
+        let x = await videosCollection
+        .updateOne({ _id: ObjectID(req.body.id) }, { $set: { description: req.body.description}})
+        videosCollection
+        .find()
+        .toArray()
+        .then(results => {
+          res.status(200).send(results);
+        })
+        .catch(err => console.log(err))
+      })
+      .catch((e) => console.log(e));
   }
 }
