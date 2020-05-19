@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { logOut } from '../actions/index';
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import DeleteAccount from './DeleteAccount';
 
 function AccountDetails() {
 
-  const dispatch = useDispatch();
   const [db, setDb] = useState([]);
   const [deleteAccount, setDeleteAccount] = useState(false);
   const currentUser = useSelector(state => state.currentUser);
@@ -37,10 +34,6 @@ function AccountDetails() {
       </div>
     )
     })
-
-  function handleSignOut() {
-    dispatch(logOut());
-  }
 
   function handleDelete(id, name) {
     const body = {
@@ -75,7 +68,6 @@ function AccountDetails() {
     return (
       <React.Fragment>
         <h3>{currentUser}</h3> 
-        <button onClick={handleSignOut}>Sign out</button>
         <button onClick={handleDeleteAccount}>Delete Account</button>
         <p>My Licks</p>
         {feed}

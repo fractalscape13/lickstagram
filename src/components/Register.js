@@ -44,10 +44,10 @@ function Register() {
   return (
     <React.Fragment>
       <h3>Register</h3>
-      <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-      <input onChange={(e) => setUsername(e.target.value)}placeholder="Choose a username" />
-      <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
-      <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password" />
+      <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+      <input onChange={(e) => setUsername(e.target.value)}placeholder="Choose a username" required />
+      <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" required />
+      <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password" required />
       <button onClick={handleRegister}>Sign up!</button>
       {passwordFail ? <p>Passwords don't match, please try again</p> : null}
       {registerFail ? <p>That email or username is already in use</p> : null}

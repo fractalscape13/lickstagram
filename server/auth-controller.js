@@ -79,8 +79,10 @@ module.exports = {
         console.log("Connected to Database");
         const db = client.db("lickstagram");
         const usersCollection = db.collection("users");
+        let mongodb = require("mongodb");
+        let ObjectID = mongodb.ObjectID;
         usersCollection
-          .deleteOne({_id: id})
+          .deleteOne({_id: ObjectID(id)})
         const videosCollection = db.collection("videos");
         videosCollection
           .remove({userId: id})
