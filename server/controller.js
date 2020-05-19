@@ -9,7 +9,7 @@ module.exports = {
     MongoClient.connect(CONNECTION_STRING, { useUnifiedTopology: true })
       .then((client) => {
         console.log("Connected to Database");
-        const db = client.db("videos");
+        const db = client.db("lickstagram");
         const videosCollection = db.collection("videos");
         videosCollection
           .insertOne(req.body)
@@ -31,7 +31,7 @@ module.exports = {
     MongoClient.connect(CONNECTION_STRING, { useUnifiedTopology: true })
       .then((client) => {
         console.log("Connected to Database");
-        const db = client.db("videos");
+        const db = client.db("lickstagram");
         db.collection("videos")
           .find()
           .toArray()
@@ -48,7 +48,7 @@ module.exports = {
     MongoClient.connect(CONNECTION_STRING, { useUnifiedTopology: true })
       .then((client) => {
         console.log("Connected to Database");
-        const db = client.db("videos");
+        const db = client.db("lickstagram");
         const videosCollection = db.collection("videos");
         let mongodb = require("mongodb");
         let ObjectID = mongodb.ObjectID;

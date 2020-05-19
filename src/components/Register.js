@@ -27,11 +27,15 @@ function Register() {
       }
       axios.post('/auth/registerUser', body)
         .then(res => {
-          const action = { id: res.data._id }
+          console.log("RES", res)
+          const action = { id: res.data[0]._id, username: res.data[0].username }
           dispatch(logIn(action));
         })
         .catch(e => {
           setRegisterFail(true);
+          setTimeout(() => {
+            setRegisterFail(false)
+            }, 3000);
           console.log(e)
         })
     }
@@ -40,13 +44,13 @@ function Register() {
   return (
     <React.Fragment>
       <h3>Register</h3>
-      <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+      <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
       <input onChange={(e) => setUsername(e.target.value)}placeholder="Choose a username" />
       <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
       <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password" />
       <button onClick={handleRegister}>Sign up!</button>
       {passwordFail ? <p>Passwords don't match, please try again</p> : null}
-      {registerFail ? <p>That email is already in use</p> : null}
+      {registerFail ? <p>That email or username is already in use</p> : null}
     </React.Fragment>
   );
 }

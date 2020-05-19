@@ -1,8 +1,10 @@
 import * as c from './ActionTypes';
 
-export function logIn() {
+export function logIn(action) {
   return {
     type: c.LOG_IN,
+    id: action.id,
+    currentUser: action.username
   }
 }
 

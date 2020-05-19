@@ -5,7 +5,7 @@ const cors = require('cors');
 require("dotenv").config();
 const { apiPort } = process.env;
 const { addVideo, getVideos, deleteVideo } = require('./controller');
-const { login, registerUser, edit } = require('./auth-controller');
+const { login, registerUser, deleteUser } = require('./auth-controller');
 
 app.use(cors())
 app.use(express.json())
@@ -37,8 +37,8 @@ app.get('/api/getVideos', getVideos);
 app.post('/api/deleteVideo', deleteVideo)
 
 app.post('/auth/login', login);
-app.post('/auth/register', registerUser);
-app.put('/auth/edit', edit);
+app.post('/auth/registerUser', registerUser);
+app.post('/auth/delete', deleteUser);
 
 app.listen(apiPort, function() {
   console.log('App is doing its thang on port ', apiPort)

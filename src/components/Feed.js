@@ -8,6 +8,7 @@ function Feed() {
   const [file, setFile] = useState(null);
   const [db, setDb] = useState([]);
   const currentUser = useSelector(state => state.currentUser);
+  const currentId = useSelector(state => state.currentId);
   const [description, setDescription] = useState('');
 
   function onChangeHandler(event) {
@@ -27,7 +28,9 @@ function Feed() {
     const body = {
       name: file.name,
       description: description,
-      favorited: []
+      favorited: [],
+      userId: currentId,
+      username: currentUser
     }    
     axios.post('/api/addVideo', body)
     .then(res => {
@@ -55,7 +58,7 @@ function Feed() {
     let vidSrc = 'uploads/' + vid.name;
     return (
       <div className="post" key={i}>
-        <p>Shredmaster5000</p>
+        <p>{vid.username}</p>
         <video  controls>
           <source src={vidSrc} type="video/mp4" />
         </video>

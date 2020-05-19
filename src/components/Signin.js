@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../actions/index';
+import axios from 'axios';
 
 
 function Signin() {
   const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginFail, setLoginFail] = useState(false);
 
   function handleSignin() {
-    // const action = { id: _id }
-    // dispatch(logIn(action));
-    dispatch(logIn());
+    const body = {
+      email,
+      password
+    }
+    axios.post('/auth/login', body)
+      .then(res => {
+        const action = { id: res.data.id, username: res.data.username }
+        console.log("ACTION", action)
+        dispatch(logIn(action));
+      })
+      .catch(e => {
+        setLoginFail(true);
+        setTimeout(() => {
+          setLoginFail(false)
+          }, 3000);
+        console.log(e)
+      })
   }
 
   return (
     <React.Fragment>
       <h3>Sign In</h3>
-      <input placeholder="Email" />
-      <input placeholder="Password" />
+      <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+      <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
       <button onClick={handleSignin}>Sign in</button>
+      {loginFail ? <p>Your email or password was incorrect</p> : null}
+
     </React.Fragment>
   );
 }

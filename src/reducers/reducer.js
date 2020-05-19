@@ -2,6 +2,7 @@ import * as c from '../actions/ActionTypes';
 
 let initialState = {
   loggedIn: false,
+  currentId: null,
   currentUser: null
 }
 
@@ -10,11 +11,13 @@ export default (state = initialState, action) => {
     case c.LOG_IN:
       return Object.assign({}, state, {
         loggedIn: true,
-        currentUser: action.id
+        currentId: action.id,
+        currentUser: action.currentUser
       });
     case c.LOG_OUT:
       return Object.assign({}, state, {
         loggedIn: false,
+        currentId: null,
         currentUser: null
       });
     default:
