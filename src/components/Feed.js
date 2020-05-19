@@ -30,28 +30,30 @@ function Feed() {
   }
   
   function onClickHandler(event) {
-    const data = new FormData()
-    data.append('file', file)
-    axios.post('http://localhost:3000/upload', data)
-    .then(res => {
-    })
-    .catch(err => {
-      console.log("error on upload", err)
-    })
-    const body = {
-      name: file.name,
-      description: description,
-      favorited: [],
-      userId: currentId,
-      username: currentUser
-    }    
-    axios.post('/api/addVideo', body)
-    .then(res => {
-      setDb(res.data);
-    })
-    .catch(err => {
-      console.log("error on db upload", err)
-    })
+    if (file) {
+      const data = new FormData()
+      data.append('file', file)
+      axios.post('http://localhost:3000/upload', data)
+      .then(res => {
+      })
+      .catch(err => {
+        console.log("error on upload", err)
+      })
+      const body = {
+        name: file.name,
+        description: description,
+        favorited: [],
+        userId: currentId,
+        username: currentUser
+      }    
+      axios.post('/api/addVideo', body)
+      .then(res => {
+        setDb(res.data);
+      })
+      .catch(err => {
+        console.log("error on db upload", err)
+      })
+    }
   }
 
   function handleLike(id) {
