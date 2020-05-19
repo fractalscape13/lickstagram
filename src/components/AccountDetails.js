@@ -32,7 +32,6 @@ function AccountDetails() {
           currentId: res.data.id,
           currentUser: res.data.username
         }
-        console.log("action", action)
         dispatch(updateSession(action));
       })
   })
