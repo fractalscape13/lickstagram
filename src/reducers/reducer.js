@@ -20,6 +20,12 @@ export default (state = initialState, action) => {
         currentId: null,
         currentUser: null
       });
+    case c.UPDATE_SESSION:
+      return Object.assign({}, state, {
+        loggedIn: action.loggedIn,
+        currentId: action.currentId,
+        currentUser: action.currentUser
+      });
     default:
       return state;
   }

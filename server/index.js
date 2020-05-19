@@ -3,12 +3,24 @@ const app = express();
 const multer = require('multer')
 const cors = require('cors');
 require("dotenv").config();
-const { apiPort } = process.env;
+const { apiPort, SESSION_SECRET } = process.env;
 const { addVideo, getVideos, deleteVideo } = require('./controller');
-const { login, registerUser, deleteUser } = require('./auth-controller');
+const { login, registerUser, deleteUser, logout, getSession } = require('./auth-controller');
+const session = require("express-session");
 
 app.use(cors())
 app.use(express.json())
+
+app.use(
+  session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 14
+    }
+  })
+);
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -39,6 +51,8 @@ app.post('/api/deleteVideo', deleteVideo)
 app.post('/auth/login', login);
 app.post('/auth/registerUser', registerUser);
 app.post('/auth/delete', deleteUser);
+app.get('/auth/logout', logout);
+app.get('/auth/session', getSession);
 
 app.listen(apiPort, function() {
   console.log('App is doing its thang on port ', apiPort)

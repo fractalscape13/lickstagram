@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import DeleteAccount from './DeleteAccount';
+import { updateSession } from '../actions/index';
 
 function AccountDetails() {
 
@@ -9,6 +10,7 @@ function AccountDetails() {
   const [deleteAccount, setDeleteAccount] = useState(false);
   const currentUser = useSelector(state => state.currentUser);
   const currentId = useSelector(state => state.currentId);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if(!(db.length > 0)){
@@ -21,6 +23,19 @@ function AccountDetails() {
       }).catch(e => console.log(e))
     }
   }, [])
+
+  useEffect(() => {
+    axios.get('/auth/session')
+      .then(res => {
+        const action = {
+          loggedIn: res.data.loggedIn,
+          currentId: res.data.id,
+          currentUser: res.data.username
+        }
+        console.log("action", action)
+        dispatch(updateSession(action));
+      })
+  })
 
   let feed = db.map((vid, i) => {
     let vidSrc = 'uploads/' + vid.name;

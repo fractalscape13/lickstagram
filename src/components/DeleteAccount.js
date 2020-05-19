@@ -16,6 +16,7 @@ function DeleteAccount(props) {
     }
     axios.post('/auth/delete', body)
       .then(res => {
+        console.log("this should be the log out")
         dispatch(logOut());
       })
       .catch(e => console.log(e));

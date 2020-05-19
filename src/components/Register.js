@@ -34,7 +34,6 @@ function Register(props) {
       }
       axios.post('/auth/registerUser', body)
         .then(res => {
-          console.log("RES", res)
           const action = { id: res.data[0]._id, username: res.data[0].username }
           dispatch(logIn(action));
         })

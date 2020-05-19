@@ -13,3 +13,12 @@ export function logOut() {
     type: c.LOG_OUT,
   }
 }
+
+export function updateSession(action) {
+  return {
+    type: c.UPDATE_SESSION,
+    loggedIn: action.loggedIn,
+    currentId: action.currentId,
+    currentUser: action.currentUser
+  }
+}

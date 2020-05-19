@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-
+import { updateSession } from '../actions/index';
 
 function Feed() {
 
@@ -10,6 +10,19 @@ function Feed() {
   const currentUser = useSelector(state => state.currentUser);
   const currentId = useSelector(state => state.currentId);
   const [description, setDescription] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios.get('/auth/session')
+      .then(res => {
+        const action = {
+          loggedIn: res.data.loggedIn,
+          currentId: res.data.id,
+          currentUser: res.data.username
+        }
+        dispatch(updateSession(action));
+      })
+  })
 
   function onChangeHandler(event) {
     console.log("onChangeHandler target file", event.target.files[0]);
@@ -55,6 +68,7 @@ function Feed() {
   }, [])
 
   let feed = db.map((vid, i) => {
+    console.log("vid", vid)
     let vidSrc = 'uploads/' + vid.name;
     return (
       <div className="post" key={i}>
