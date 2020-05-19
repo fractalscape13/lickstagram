@@ -56,8 +56,17 @@ function Feed() {
     }
   }
 
-  function handleLike(id) {
-    console.log("you liked this video id:", id);
+  function handleFavorite(id) {
+    console.log("you starred this video id:", id, "user:", currentUser);
+    const body = {
+      id,
+      currentUser
+    }
+    axios.put('/api/favoriteVideo', body)
+    .then(res => {
+      setDb(res.data);
+    })
+    .catch(err => console.log('error on favorite', err))
   }
 
   useEffect(() => {
@@ -79,18 +88,22 @@ function Feed() {
           <source src={vidSrc} type="video/mp4" />
         </video>
         <p>{vid.description}</p>
-        <button onClick={() => handleLike(vid._id)}>Like</button>
+        <p>{vid.favorited.length} stars</p>
+        <button onClick={() => handleFavorite(vid._id)}>Star</button>
       </div>
     )
     })
 
   return (
-    <React.Fragment>
-      <input type="file" name="file" onChange={onChangeHandler} />
-      <input type="text" onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
-      <button type="button" onClick={onClickHandler}>Add video</button><br />
-      {feed}
-    </React.Fragment>
+    <div className="dropdown">
+      <button className="dropbtn">Add a lick</button>
+      <div className="dropdown-content">
+        <input type="file" name="file" onChange={onChangeHandler} />
+        <input type="text" onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
+        <button type="button" onClick={onClickHandler}>Add video</button><br />
+      </div>
+        {feed}
+    </div>
   );
 }
 

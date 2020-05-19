@@ -66,6 +66,47 @@ module.exports = {
           .catch((error) => console.error(error));
       })
       .catch((e) => console.log(e));
-      
+  },
+
+  favoriteVideo: (req, res) => {
+    MongoClient.connect(CONNECTION_STRING, { useUnifiedTopology: true })
+      .then((client) => {
+        console.log("Connected to Database");
+        const db = client.db("lickstagram");
+        const videosCollection = db.collection("videos");
+        let mongodb = require("mongodb");
+        let ObjectID = mongodb.ObjectID;
+        let newVal;
+        videosCollection
+        .find({ _id: ObjectID(req.body.id) })
+        .toArray()
+        .then(r => {
+          let currentArr = [...r[0].favorited];
+          if (currentArr.includes(req.body.currentUser)) {
+            let arr = currentArr.filter(name => name !== req.body.currentUser)
+            newVal = { $set: {favorited: arr} }
+          } else {
+            newVal = { $set: {favorited: [...currentArr, req.body.currentUser]}}
+          }
+          videosCollection
+            .updateOne({ _id: ObjectID(req.body.id) }, newVal)
+            .then(() => {
+              db.collection("videos")
+                .find()
+                .toArray()
+                .then((results) => {
+                  res.status(200).send(results);
+                })
+                .catch((e) => console.log(e));
+            })
+            .catch((error) => console.error(error));
+        })
+        .catch(err => console.log(err))
+      })
+      .catch((e) => console.log(e));
+  }, 
+
+  editVideo: (req, res) => {
+
   }
 }

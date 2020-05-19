@@ -4,7 +4,7 @@ const multer = require('multer')
 const cors = require('cors');
 require("dotenv").config();
 const { apiPort, SESSION_SECRET } = process.env;
-const { addVideo, getVideos, deleteVideo } = require('./controller');
+const { addVideo, getVideos, deleteVideo, favoriteVideo, editVideo } = require('./controller');
 const { login, registerUser, deleteUser, logout, getSession } = require('./auth-controller');
 const session = require("express-session");
 
@@ -46,7 +46,9 @@ app.post('/upload', function(req, res) {
 
 app.post('/api/addVideo', addVideo);
 app.get('/api/getVideos', getVideos);
-app.post('/api/deleteVideo', deleteVideo)
+app.post('/api/deleteVideo', deleteVideo);
+app.put('/api/favoriteVideo', favoriteVideo);
+app.put('/api/editVideo', editVideo);
 
 app.post('/auth/login', login);
 app.post('/auth/registerUser', registerUser);

@@ -2,15 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import DeleteAccount from './DeleteAccount';
+import EditVideo from './EditVideo';
 import { updateSession } from '../actions/index';
 
 function AccountDetails() {
 
   const [db, setDb] = useState([]);
   const [deleteAccount, setDeleteAccount] = useState(false);
+  const [editVideo, setEditVideo] = useState(null);
   const currentUser = useSelector(state => state.currentUser);
   const currentId = useSelector(state => state.currentId);
   const dispatch = useDispatch();
+  
+  useEffect(() => {
+    axios.get('/auth/session')
+      .then(res => {
+        const action = {
+          loggedIn: res.data.loggedIn,
+          currentId: res.data.id,
+          currentUser: res.data.username
+        }
+        dispatch(updateSession(action));
+      })
+  })
 
   useEffect(() => {
     if(!(db.length > 0)){
@@ -24,27 +38,18 @@ function AccountDetails() {
     }
   }, [])
 
-  useEffect(() => {
-    axios.get('/auth/session')
-      .then(res => {
-        const action = {
-          loggedIn: res.data.loggedIn,
-          currentId: res.data.id,
-          currentUser: res.data.username
-        }
-        dispatch(updateSession(action));
-      })
-  })
 
   let feed = db.map((vid, i) => {
     let vidSrc = 'uploads/' + vid.name;
     return (
-      <div key={i}>
+      <div className="post" key={i}>
         <video  controls>
           <source src={vidSrc} type="video/mp4" />
         </video>
-        <button onClick={() => handleEdit(vid._id, vid.name)}>Edit Lick</button>
-        <button onClick={() => handleDelete(vid._id, vid.name)}>Delete Lick</button>
+        <p>{vid.description}</p>
+        <p>{vid.favorited.length} stars</p>
+        <button onClick={() => setEditVideo(vid)}>Edit Lick</button>
+        <button onClick={() => handleDelete(vid._id)}>Delete Lick</button>
       </div>
     )
     })
@@ -62,10 +67,6 @@ function AccountDetails() {
     })
   }
 
-  function handleEdit(id) {
-    console.log("we're editing this id:", id);
-  }
-
   function handleDeleteAccount() {
     setDeleteAccount(true);
   }
@@ -77,6 +78,10 @@ function AccountDetails() {
   if (deleteAccount) {
     return (
       <DeleteAccount dontDeleteAccount={dontDeleteAccount}/>
+    )
+  } else if (editVideo) {
+    return (
+      <EditVideo currentVideo={editVideo} resetEdit={() => setEditVideo(null)}/>
     )
   } else {
     return (
