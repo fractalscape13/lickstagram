@@ -49,7 +49,9 @@ function Register(props) {
 
   return (
     <React.Fragment>
+      <h1>Lickstagram</h1>
       <h3>Register</h3>
+      <p>Share your tasty licks</p>
       <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
       <input onChange={(e) => setUsername(e.target.value)}placeholder="Choose a username" />
       <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />

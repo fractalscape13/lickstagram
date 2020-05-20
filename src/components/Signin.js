@@ -34,7 +34,9 @@ function Signin(props) {
 
   return (
     <React.Fragment>
+      <h1>Lickstagram</h1>
       <h3>Sign In</h3>
+      <p>Share your tasty licks</p>
       <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
       <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
       <button onClick={handleSignin}>Sign in</button>

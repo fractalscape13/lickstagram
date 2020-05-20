@@ -103,7 +103,7 @@ function AccountDetails() {
     }
     axios.put('/api/favoriteVideo', body)
     .then(res => {
-      setDb(res.data);
+      setDbMaster(res.data);
     })
     .catch(err => console.log('error on favorite', err))
   }
