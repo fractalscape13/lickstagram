@@ -4,7 +4,7 @@
 #### By _**Joseph Wangemann**_
 
 ## Description
-_Instagram-like app that allows users to share short videos of playing a musical instrument (licks).  A user can register, login and logout.  A logged-in user can post videos, edit their videos, see the feed of all users' videos, star videos, and see a list of videos they have starred._
+_Instagram-like app that allows users to share short videos of playing a musical instrument (licks).  A user can register, login and logout.  A logged-in user can post videos, edit their videos, see the feed of all users' videos, star/unstar videos, and see a list of videos they have starred._
 
 ## Specifications
 
