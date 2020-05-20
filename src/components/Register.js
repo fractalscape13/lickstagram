@@ -57,7 +57,7 @@ function Register(props) {
       <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
       <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password" />
       <button onClick={handleRegister}>Sign up!</button>
-      <p className="clickable" onClick={() => props.setRegisterForm(false)}>Already registered? Click to signin</p>
+      <p className="clickable" onClick={() => props.setRegisterForm(false)}>Already registered? Click to sign in</p>
       {passwordFail ? <p className="error">Passwords don't match, please try again</p> : null}
       {registerFail ? <p className="error">That email or username is already in use</p> : null}
       {emptyInput ? <p className="error">You left one or more inputs blank</p> : null}
