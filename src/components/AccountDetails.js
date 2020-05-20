@@ -4,11 +4,11 @@ import axios from 'axios';
 import DeleteAccount from './DeleteAccount';
 import EditVideo from './EditVideo';
 import { updateSession } from '../actions/index';
-import { FaRegStar } from 'react-icons/fa';
 
 function AccountDetails() {
 
   const [db, setDb] = useState([]);
+  const [dbMaster, setDbMaster] = useState([]);
   const [deleteAccount, setDeleteAccount] = useState(false);
   const [editVideo, setEditVideo] = useState(null);
   const [favoritedVideos, setFavoritedVideos] = useState(false);
@@ -36,6 +36,7 @@ function AccountDetails() {
           return vid.userId === currentId
         })
         setDb(currentVids)
+        setDbMaster(res.data)
       }).catch(e => console.log(e))
     }
   }, [])
@@ -57,7 +58,7 @@ function AccountDetails() {
     )
     })
 
-    let filteredArr = db.filter(vid => vid.favorited.includes(currentUser))
+    let filteredArr = dbMaster.filter(vid => vid.favorited.includes(currentUser))
     let starredFeed = filteredArr.map((vid, i) => {
     let vidSrc = 'uploads/' + vid.name;
     return (
@@ -69,7 +70,6 @@ function AccountDetails() {
           <p><em>{vid.description}</em></p>
           <p>Stars: {vid.favorited.length}</p>
           <p className="clickable" onClick={() => handleFavorite(vid._id)}>Click to remove from starred licks</p>
-          {/* <button className={vid.favorited.includes(currentUser) ? "alreadystarred" : "starbtn"}onClick={() => handleFavorite(vid._id)}><FaRegStar size="20px" /></button> */}
         </div>
       </div>
     )
