@@ -140,12 +140,19 @@ a:hover {
   border: 2px solid black;
   margin: 15px;
   border-radius: 5px;
-  max-width: 350px;
+  width: 350px;
+  /* height: 370px; */
+  /* display: flex; */
 }
 
 .postbody {
   padding-left: 15px;
   padding-bottom: 5px
+}
+
+.error {
+  font-weight: bold;
+  color: darkred;
 }
 
 .dropdown {
@@ -154,7 +161,7 @@ a:hover {
   margin: 0;
   padding: 0;
   width: 50px;
-  height: 50px;
+  height: 150px;
 }
 
 .dropdown-content {
