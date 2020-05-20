@@ -47,6 +47,7 @@ function Account() {
   } else {
     return (
       <React.Fragment>
+        <h3>My Account</h3>
         <button onClick={handleSignOut}>Sign out</button>
         <AccountDetails />
       </React.Fragment>

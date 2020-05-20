@@ -49,7 +49,7 @@ function Header() {
   return (
     <React.Fragment>
       <div className="title">
-        <Link to="/"><h2>Lickstagram</h2></Link><br/>
+        <Link to="/"><h2 className="clickable">Lickstagram</h2></Link><br/>
       </div>
       <div className="menu">
         <Link to="/account"><img src={account} title="Account" alt="acct"/></Link>
