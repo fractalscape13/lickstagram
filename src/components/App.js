@@ -22,7 +22,6 @@ function App() {
             <Route path='/account' component={Account} />
           </Switch>
         </div>
-        {/* <div className="rightSide"></div> */}
       </div>
     </Router>
   );
