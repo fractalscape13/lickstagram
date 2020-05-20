@@ -29,6 +29,10 @@ html {
   align-items: center; 
 }
 
+.header h1 {
+  font-family: 'Caveat', cursive;
+  font-size: 60px;
+}
 .starbtn {
   border: 4px solid rgb(65, 12, 12);
   border-radius: 50%;
@@ -66,7 +70,6 @@ input:hover {
 }
 
 video {
-  /* margin: 25px; */
   max-width: 350px;
   border-radius: 3px;
 }
@@ -115,12 +118,10 @@ a:hover {
   z-index: 1;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #222174;
 }
