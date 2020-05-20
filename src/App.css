@@ -1,7 +1,6 @@
 body, html {
   min-height: 100%;
-  font-family: 'Courier New', Courier, monospace;
-}
+  font-family: 'Josefin Sans', sans-serif;}
 
 html {
   background: url("./assets/bg.jpeg") no-repeat center center fixed; 
@@ -85,18 +84,14 @@ h2 {
 }
 
 .starbtn {
-  border: 4px solid rgb(65, 12, 12);
-  border-radius: 50%;
-  margin: 3px;
-  color: rgb(177, 118, 8);
+  border: none;
+  background-color: transparent;
 }
 
 .alreadystarred {
-  border: 4px solid rgb(65, 12, 12);
-  border-radius: 50%;
-  margin: 3px;
-  color: rgb(184, 132, 35);
-  opacity: .5;
+  border: none;
+  background-color: transparent;
+  opacity: .4;
 }
 
 button {
@@ -111,9 +106,16 @@ button:hover {
 }
 
 input {
-  margin: 3px;
-  border-radius: 10px;
   text-align: center;
+  font-family: inherit;
+  border: 0;
+  border-bottom: 2px solid black;
+  outline: 0;
+  font-size: 17px;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 10px;
 }
 
 input:hover {
@@ -121,8 +123,13 @@ input:hover {
 }
 
 video {
-  max-width: 350px;
+  width: 350px;
+  max-height: 300px;
   border-radius: 3px;
+}
+
+p {
+  font-weight: 200;
 }
 
 a {
@@ -169,16 +176,11 @@ a:hover {
   position: absolute;
   background-color: #b4b3b3;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #222174;
 }
 
 img {

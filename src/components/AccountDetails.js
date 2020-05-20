@@ -128,6 +128,7 @@ function AccountDetails() {
   } else {
     return (
       <React.Fragment>
+            {console.log("FEED", feed.length)}
         <h3>{currentUser}</h3> 
         <button onClick={handleDeleteAccount}>Delete Account</button>
         <button onClick={() => setFavoritedVideos(true)}>See Your Starred Licks</button>
