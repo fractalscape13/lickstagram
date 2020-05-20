@@ -6,17 +6,22 @@
 
 ### MVP
 * User registration & login
-* Upload video files (15 second max) with text and timestamp
+* Upload video files with text description
 * Full CRUD functionality for user-posted clips while logged in
 * See feed of all users clips on main page
 * Clickable 'like' button and counter for each clip
 
 ### Technology
-* React
-* Redux/React-Redux?
-* Video-React or ReactPlayer (or similar)
-* MongoDb/Express/Node/Axios/Multer/Nodemon/Cors
-      * ~ or ~ Firebase ~ or ~ C#/.NET/MySQL
+* React / React-Router / React-Icons
+* Redux / React-Redux
+* MongoDb / Mongoose
+* Express / Express-Session
+* Node
+* Nodemon
+* Axios
+* Bcrypt
+* Multer 
+* Cors
 
 ### Stretch Goals
 * Profile picture/avatar, display name
