@@ -95,9 +95,14 @@ h2 {
 }
 
 button {
-  border: 5px solid rgb(32, 32, 90);
-  border-radius: 10px;
+  padding-top: 4px;
+  font-family: inherit;
   margin: 3px;
+  border-width: 3px;
+  border-image: 
+  linear-gradient(rgb(85, 1, 145), rgb(180, 100, 1)) 1;
+  border-radius: 10em;
+  background-color: transparent;
 }
 
 button:hover {
@@ -141,6 +146,7 @@ a {
   text-decoration: none;
   width: 50px;
   height: 50px;
+  color: indigo;
   /* color: black; */
 }
 
@@ -168,7 +174,6 @@ a:hover {
 
 .dropdown {
   position: relative;
-  /* display: inline-block; */
   margin: 0;
   padding: 0;
   width: 50px;
@@ -185,6 +190,15 @@ a:hover {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.dropdown input {
+  font-size: 14px;
+}
+
+.dropdown-desc {
+  margin-left: 5px;
+  overflow: auto;
 }
 
 img {
