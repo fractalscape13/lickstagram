@@ -58,7 +58,7 @@ function Header() {
           <p className="clickable"><img src={add} title="Add video" alt="add"/></p>
           <div className="dropdown-content">
             <input className="altInput" type="file" name="file" onChange={onChangeHandler} />
-            <input type="text" onChange={(e) => setDescription(e.target.value)} placeholder="Description" /><br/>
+            <input className="dropdown-desc" type="text" onChange={(e) => setDescription(e.target.value)} placeholder="Description" /><br/>
             <button type="button" onClick={onClickHandler}>Add video</button><br />
           </div>
         </div>
