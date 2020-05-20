@@ -100,7 +100,7 @@ button {
   margin: 3px;
   border-width: 3px;
   border-image: 
-  linear-gradient(rgb(85, 1, 145), rgb(180, 100, 1)) 1;
+  linear-gradient(to right, rgb(85, 1, 145), rgb(180, 100, 1)) 1;
   border-radius: 10em;
   background-color: transparent;
 }
