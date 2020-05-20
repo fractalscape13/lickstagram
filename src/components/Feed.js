@@ -44,7 +44,6 @@ function Feed() {
   }, [])
 
   let feed = db.map((vid, i) => {
-    console.log("vid", vid)
     let vidSrc = 'uploads/' + vid.name;
     return (
       <div className="post" key={i}>
