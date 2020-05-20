@@ -41,7 +41,7 @@ function Signin(props) {
       <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
       <button onClick={handleSignin}>Sign in</button>
       <p className="clickable" onClick={() => props.setRegisterForm(true)}>New? Click to register</p>
-      {loginFail ? <p>Your email or password was incorrect</p> : null}
+      {loginFail ? <p className="error">Your email or password was incorrect</p> : null}
 
     </React.Fragment>
   );
