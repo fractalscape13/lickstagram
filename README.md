@@ -34,7 +34,7 @@ To run this project, you will:
 * create-react-app
 * Redux / React-Redux
 * React-Router
-* Express
+* Express / Express-Session
 * Node
 * Nodemon
 * MongoDb
