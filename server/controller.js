@@ -2,7 +2,6 @@ const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
 const { CONNECTION_STRING } = process.env;
 
-
 module.exports = {
   addVideo: (req, res) => {
     console.log("req.body", req.body)
