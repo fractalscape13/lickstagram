@@ -18,8 +18,8 @@
 .env.test.local
 .env.production.local
 .env
-/uploads
-/public/uploads
+/uploads2
+/public/uploads2
 
 npm-debug.log*
 yarn-debug.log*
