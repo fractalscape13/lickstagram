@@ -31,5 +31,5 @@
 * Ability to mute specific users
 * Add search by user
 * Add tags to post, allow search or follow by tag
-* Access device camera to gake clip
+* Access device camera to take clip
 * Create mobile version with React Native (or if not, responsive media-query based mobile stylesheet)
