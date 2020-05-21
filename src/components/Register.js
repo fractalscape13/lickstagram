@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../actions/index';
 import axios from 'axios';
 
-
 function Register(props) {
   
   const dispatch = useDispatch();
