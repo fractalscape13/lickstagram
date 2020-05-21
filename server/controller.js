@@ -55,7 +55,7 @@ module.exports = {
           .deleteOne({ _id: ObjectID(req.body.id) })
           .then(() => {
             db.collection("videos")
-              .find()
+              .find({userId: req.body.userId})
               .toArray()
               .then((results) => {
                 res.status(200).send(results);
@@ -117,7 +117,7 @@ module.exports = {
         let x = await videosCollection
         .updateOne({ _id: ObjectID(req.body.id) }, { $set: { description: req.body.description}})
         videosCollection
-        .find()
+        .find({userId: req.body.userId})
         .toArray()
         .then(results => {
           res.status(200).send(results);
