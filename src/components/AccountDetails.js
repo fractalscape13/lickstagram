@@ -49,10 +49,13 @@ function AccountDetails() {
           <source src={vidSrc} type="video/mp4" />
         </video>
         <div className="postbody">
-          <p><em>{vid.description}</em></p>
-          <p>Stars: {vid.favorited.length}</p>
-          <button onClick={() => setEditVideo(vid)}>Edit Lick</button>
-          <button onClick={() => handleDelete(vid._id)}>Delete Lick</button>
+          <div className="postinfo">
+            <p><em>{vid.description}</em></p>
+          </div>
+          <div className="postinfo">
+            <button onClick={() => setEditVideo(vid)}>Edit Lick</button>
+            <button onClick={() => handleDelete(vid._id)}>Delete Lick</button>
+          </div>
         </div>
       </div>
     )
@@ -66,9 +69,9 @@ function AccountDetails() {
         <video  controls>
           <source src={vidSrc} type="video/mp4" />
         </video>
-        <div className="postbody">
+        <div className="starpostinfo">
           <p><em>{vid.description}</em></p>
-          <p>Stars: {vid.favorited.length}</p>
+          <p>Star Count: {vid.favorited.length}</p>
           <p className="clickable" onClick={() => handleFavorite(vid._id)}>Click to remove from starred licks</p>
         </div>
       </div>

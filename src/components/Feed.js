@@ -52,7 +52,7 @@ function Feed() {
         </video>
         <div className="postbody">
           <div className="postrow">
-            <div className="leftrow">
+            <div>
               <h4>{vid.username}</h4>
             </div>
             <div className="rightrow">
