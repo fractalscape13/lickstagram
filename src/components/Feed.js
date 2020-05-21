@@ -51,10 +51,16 @@ function Feed() {
           <source src={vidSrc} type="video/mp4" />
         </video>
         <div className="postbody">
-          <h4>{vid.username}</h4>
+          <div className="postrow">
+            <div className="leftrow">
+              <h4>{vid.username}</h4>
+            </div>
+            <div className="rightrow">
+              <button  className={vid.favorited.includes(currentUser) ? "alreadystarred" : "starbtn"} onClick={() => handleFavorite(vid._id)}><FaRegStar size="20px" /></button>
+              <p>{vid.favorited.length}</p>
+            </div>
+          </div>
           <p><em>{vid.description}</em></p>
-          <p>Stars: {vid.favorited.length}</p>
-          <button  className={vid.favorited.includes(currentUser) ? "alreadystarred" : "starbtn"} onClick={() => handleFavorite(vid._id)}><FaRegStar size="20px" /></button>
         </div>
       </div>
     )
