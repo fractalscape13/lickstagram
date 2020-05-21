@@ -6,19 +6,29 @@
 ## Description
 _Instagram-like app that allows users to share short videos of playing a musical instrument (licks).  A user can register, login and logout.  A logged-in user can post videos, edit their videos, see the feed of all users' videos, star/unstar videos, and see a list of videos they have starred._
 
-## Specifications
+## Screen Shots
+* On page load, a user will see the sign-in page.  If the user isn't registered, the link at the bottom will bring up the registration page.
+![Signin](./src/assets/loginview.png?raw=true "Sign in view")
+* If a user is already registered, the link at the bottom will return to the sign-in page.
+![Register](./src/assets/registerview.png?raw=true "Register view")
+* After sign-in, the main video feed will be shown.  All users videos are able to be viewed and starred. The icons on the left allow navigation to account and main feed, and the bottom icon (plus sign) is the button to add a video.
+![Feed](./src/assets/feedview.png?raw=true "Main feed")
+* In account view, a user can sign out, delete their account, edit/delete their own videos, and see their list of starred videos.
+![Acct](./src/assets/accountview.png?raw=true "Account view")
 
-## Wireframe/Component Tree
-
+<!-- ## Specifications -->
 ## Installation/Setup Instructions
-In terminal, navigate to desktop or directory where you want to clone the project
-Clone repository in command line with 'git clone https://github.com/fractalscape13/lickstagram'
+This project uses MongoDb Atlas as a database and Express-Sessions for authentication persistence.  It requires a user to create a .env file in the root directory of this project which will contain three values:
+  * CONNECTION_STRING = 'Your unique connection string from MongoDb Atlas goes here'
+  * SESSION_SECRET = 'Your unique session secret goes here. It can be any string'
+  * apiPort = Whatever port you want the back-end to run on goes here. It will be a number, not a string. Example: 8000
 
-In the root project directory, run `npm install` to install all dependencies.  Then, you can run:
-### `npm start` and `npx nodemon` in separate terminals
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-The page will reload if you make edits.<br />
+To run this project, you will:
+  * Get a connection string from MongoDb Atlas
+  * Clone the repository: `git clone https://github.com/fractalscape13/lickstagram`
+  * In the root project directory, run `npm install` to install all dependencies. 
+  * You will open two terminals and navigate to the root directory.  In one terminal you will run the back-end `npx nodemon`, and in the other you will run the front-end `npm start`
+  *Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Technologies Used
 * React
