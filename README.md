@@ -10,7 +10,7 @@ _Instagram-like app that allows users to share short videos of playing a musical
 * On page load, a user will see the sign-in page.  If the user isn't registered, the link at the bottom will bring up the registration page.
 ![Signin](./src/assets/loginview.png?raw=true "Sign in view")
 * If a user is already registered, the link at the bottom will return to the sign-in page.
-![Register](./src/assets/registerview.png?raw=true "Register view" | width=20)
+![Register](./src/assets/registerview.png?raw=true "Register view")
 * After sign-in, the main video feed will be shown.  All user videos are able to be viewed and starred. The icons on the left allow navigation to account and main feed, and the bottom icon (plus sign) is the button to add a video.
 ![Feed](./src/assets/feedview.png?raw=true "Main feed")
 * In account view, a user can sign out, delete their account, edit/delete their own videos, and see their list of starred videos.
