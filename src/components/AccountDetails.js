@@ -75,9 +75,10 @@ function AccountDetails() {
     )
     })
 
-  function handleDelete(id, name) {
+  function handleDelete(id) {
     const body = {
-      id: id
+      id: id,
+      userId: currentId
     }
     axios.post('/api/deleteVideo', body)
     .then(res => {

@@ -29,6 +29,7 @@ function Account() {
     setRegisterForm(false);
     dispatch(logOut());
     axios.get('/auth/logout')
+      .then(() => setRegisterForm(false))
       .catch(e => console.log(e));
   }
 

@@ -8,7 +8,8 @@ function EditVideo(props) {
   function handleEdit() {
     const body = {
       id: props.currentVideo._id,
-      description: currentDescription
+      description: currentDescription,
+      userId: props.currentVideo.userId
     }
     axios.put('/api/editVideo', body)
       .then(res => {
@@ -22,12 +23,12 @@ function EditVideo(props) {
   let vidSrc = 'uploads/' + props.currentVideo.name;
 
   return (
-    <div>
+    <div className="editParent">
       <h4>Confirm edit</h4>
       <video  controls>
         <source src={vidSrc} type="video/mp4" />
-      </video>
-      <input onChange={(e) => setCurrentDescription(e.target.value)} defaultValue={props.currentVideo.description} type="text" />
+      </video><br/>
+      <input className="editInput" onChange={(e) => setCurrentDescription(e.target.value)} defaultValue={props.currentVideo.description} type="text" /><br/>
       <button onClick={handleEdit}>Confirm</button>
     </div>
   );

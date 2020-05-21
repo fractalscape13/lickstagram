@@ -15,7 +15,6 @@ function Header() {
   const currentUser = useSelector(state => state.currentUser);
 
   function onChangeHandler(event) {
-    console.log("onChangeHandler target file", event.target.files[0]);
     setFile(event.target.files[0]);
   }
   
@@ -39,6 +38,7 @@ function Header() {
       axios.post('/api/addVideo', body)
       .then(res => {
         setDb(res.data);
+        console.log("db is set:", db)
       })
       .catch(err => {
         console.log("error on db upload", err)

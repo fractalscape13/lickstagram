@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../actions/index';
 import axios from 'axios';
@@ -19,7 +19,6 @@ function Signin(props) {
     axios.post('/auth/login', body)
       .then(res => {
         const action = { id: res.data.id, username: res.data.username }
-        console.log("ACTION", action)
         dispatch(logIn(action));
       })
       .catch(e => {
@@ -39,7 +38,7 @@ function Signin(props) {
       <h3>Sign In</h3>
       <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
       <input onChange={(e) => setPassword(e.target.value)}type="password" placeholder="Password" />
-      <button onClick={handleSignin}>Sign in</button>
+      <button onClick={() => handleSignin()}>Sign in</button>
       <p className="clickable" onClick={() => props.setRegisterForm(true)}>New? Click to register</p>
       {loginFail ? <p className="error">Your email or password was incorrect</p> : null}
 
