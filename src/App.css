@@ -69,7 +69,7 @@ html {
 
 .clickable:hover {
   cursor: pointer;
-  opacity: .7;
+  opacity: .6;
 }
 
 h1 {
@@ -81,7 +81,7 @@ h2 {
   font-family: 'Caveat', cursive;
   margin: 0;
   font-size: 40px;
-  background: -webkit-linear-gradient(top, rgb(72, 0, 122), rgb(180, 100, 1));
+  background: -webkit-linear-gradient(top, rgb(120, 17, 194), rgb(105, 2, 146), rgb(248, 212, 7));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -103,7 +103,7 @@ button {
   margin: 3px;
   border-width: 3px;
   border-image: 
-  linear-gradient(to right bottom, rgb(85, 1, 145), rgb(180, 100, 1)) 1;
+  linear-gradient(to right bottom, rgb(85, 1, 145), rgb(199, 110, 2)) 1;
   border-radius: 10em;
   background-color: transparent;
 }
@@ -176,7 +176,31 @@ a:hover {
 
 .postbody {
   padding-left: 15px;
-  padding-bottom: 5px
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.postrow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightrow {
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.postinfo {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.starpostinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .error {
@@ -216,6 +240,6 @@ a:hover {
 
 img {
   max-width: 50px;
-  margin-bottom: 15px;
+  /* margin-bottom: 10px; */
   margin-left: 10px;
 }
